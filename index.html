@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ali AI Predictor</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
+:root{
+--bg:#0b0f1a;
+--card:#151c2e;
+--text:#e9eef7;
+--muted:#93a4b8;
+--green:#19d38a;
+--blue:#2b6fff;
 --orange:#ff7a00;
---green:#0cb86a;
---blue:#1b57f2;
---bg:#0d1117;
---card:#1a2336;
---muted:#9aa4b2;
---text:#e9edf3;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
 font-family:'Cairo',sans-serif;
-background:var(--bg);
+background:radial-gradient(circle at top,#101933,#0b0f1a);
 color:var(--text);
 display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
-padding:20px;
+padding:18px;
 }
 
 .container{
-background:var(--card);
-border-radius:20px;
-padding:28px 24px;
-width:min(440px,100%);
-box-shadow:0 0 25px rgba(0,0,0,0.5);
-animation:fadeIn .8s ease;
+width:min(460px,100%);
+background:rgba(21,28,46,0.95);
+border-radius:22px;
+padding:24px;
+box-shadow:0 0 50px rgba(0,0,0,0.7);
+border:1px solid rgba(255,255,255,0.05);
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;}
-}
-
-.flag{
-width:64px;
-display:block;
-margin:0 auto 10px;
-}
-
-h1{
+.logo{
 text-align:center;
-color:var(--green);
-font-size:26px;
+font-size:24px;
 font-weight:800;
+color:var(--green);
 margin-bottom:6px;
 }
 
 .subtitle{
 text-align:center;
-font-size:14px;
+font-size:13px;
 color:var(--muted);
-margin-bottom:18px;
+margin-bottom:12px;
 }
 
 .badges{
@@ -71,7 +60,7 @@ display:flex;
 justify-content:center;
 gap:8px;
 flex-wrap:wrap;
-margin-bottom:16px;
+margin-bottom:14px;
 }
 
 .badge{
@@ -79,31 +68,43 @@ font-size:12px;
 padding:6px 10px;
 border-radius:999px;
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.07);
 color:var(--muted);
 }
 
-label{
-display:block;
-margin:14px 0 6px;
-font-weight:600;
+.notice{
+background:rgba(25,211,138,0.08);
+border:1px solid rgba(25,211,138,0.25);
+padding:10px;
+border-radius:12px;
+font-size:12px;
+text-align:center;
+margin-bottom:12px;
+color:var(--green);
+}
+
+.section-title{
+margin:12px 0 6px;
+font-weight:700;
+font-size:14px;
 }
 
 .games{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:8px;
 }
 
 .game{
+background:var(--card);
+border:1px solid rgba(255,255,255,0.06);
+padding:10px;
+border-radius:12px;
 display:flex;
 align-items:center;
-gap:8px;
-padding:10px;
-background:#1a2336;
-border-radius:12px;
+gap:6px;
+font-size:13px;
 cursor:pointer;
-border:1px solid rgba(255,255,255,0.08);
 }
 
 .input{
@@ -111,79 +112,77 @@ width:100%;
 padding:12px;
 border-radius:12px;
 border:none;
-background:#1a2336;
-color:white;
-}
-
-.hint{
-font-size:12px;
-color:var(--muted);
-margin-top:4px;
-}
-
-.warning{
-display:none;
-color:var(--orange);
-font-size:13px;
-margin-top:6px;
+background:var(--card);
+color:#fff;
 }
 
 .btn{
 width:100%;
-margin-top:18px;
+margin-top:14px;
 padding:14px;
 border-radius:12px;
 border:none;
-font-weight:700;
-font-size:16px;
+font-weight:800;
+font-size:15px;
 background:linear-gradient(90deg,var(--orange),var(--green));
-color:black;
+color:#000;
 cursor:pointer;
 }
 
-.btn:disabled{opacity:0.6;}
+.btn:disabled{opacity:.5}
 
 .progress{
 display:none;
 height:10px;
-background:#1a2336;
+background:var(--card);
 border-radius:999px;
+margin-top:12px;
 overflow:hidden;
-margin-top:14px;
 }
 
 .bar{
 height:100%;
-width:0;
+width:0%;
 background:linear-gradient(90deg,var(--green),var(--blue));
-animation:fill 2.4s forwards;
+animation:fill 2s forwards;
 }
 
-@keyframes fill{
-to{width:100%;}
+@keyframes fill{to{width:100%}}
+
+.live{
+margin-top:12px;
+font-size:12px;
+color:var(--muted);
+text-align:center;
 }
+
+#online{color:var(--green)}
 
 .meta{
 display:flex;
 justify-content:space-between;
-margin-top:16px;
-font-size:13px;
+font-size:12px;
+margin-top:12px;
 color:var(--muted);
 }
 
-#online{color:var(--green);}
+.telegram{
+margin-top:14px;
+display:block;
+text-align:center;
+padding:12px;
+border-radius:12px;
+background:#229ED9;
+color:white;
+font-weight:700;
+text-decoration:none;
+}
 
 .footer{
 text-align:center;
-font-size:12px;
-margin-top:14px;
+margin-top:10px;
+font-size:11px;
 color:var(--muted);
-}
-
-.footer strong{color:white;}
-
-@media (max-width:420px){
-.games{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -192,90 +191,92 @@ color:var(--muted);
 
 <div class="container">
 
-<img src="https://flagcdn.com/w320/iq.png" class="flag">
+<div class="logo">Ali AI Predictor</div>
 
-<h1>Ali AI Predictor</h1>
-<div class="subtitle">توقعات ذكية • دينار عراقي • نسخة العراق</div>
+<div class="subtitle">
+تحليل ذكي للبيانات • نسخة العراق
+</div>
 
 <div class="badges">
 <div class="badge">🔒 آمن</div>
-<div class="badge">⚡ ذكاء اصطناعي</div>
+<div class="badge">📊 تحليل</div>
+<div class="badge">⚡ مباشر</div>
 <div class="badge">🇮🇶 العراق</div>
 </div>
 
-<label>اختر اللعبة</label>
-
-<div class="games">
-<label class="game"><input type="radio" name="game" checked> 🍎 Apple of Fortune</label>
-<label class="game"><input type="radio" name="game"> ✈️ Aviator</label>
-<label class="game"><input type="radio" name="game"> 💣 Mines</label>
-<label class="game"><input type="radio" name="game"> 🐔 Chicken Road</label>
-<label class="game"><input type="radio" name="game"> ⚽ Penalty</label>
+<div class="notice">
+⚡ يتم تحديث البيانات كل 10 ثواني — النتائج تعتمد على التحليل فقط
 </div>
 
-<label>رقم حساب 1xBet</label>
-<input id="account" class="input" placeholder="مثال: 1234567890" maxlength="10">
+<div class="section-title">اختر اللعبة</div>
 
-<div class="hint">أدخل رقم مكون من 10 أرقام</div>
-<div id="warning" class="warning">يرجى إدخال رقم صحيح</div>
+<div class="games">
+<label class="game"><input type="radio" name="g" checked> Aviator</label>
+<label class="game"><input type="radio" name="g"> Mines</label>
+<label class="game"><input type="radio" name="g"> Crash</label>
+<label class="game"><input type="radio" name="g"> Penalty</label>
+<label class="game"><input type="radio" name="g"> 🐔 Chicken Road</label>
+<label class="game"><input type="radio" name="g"> 🎰 Slots</label>
+</div>
 
-<button id="start" class="btn" disabled>ابدأ</button>
+<div class="section-title">رقم الحساب</div>
+<input id="acc" class="input" placeholder="اكتب رقم الحساب">
 
-<div class="progress" id="progress">
-<div class="bar"></div>
+<button id="btn" class="btn" disabled>
+بدء تحليل AI
+</button>
+
+<div class="progress" id="prog"><div class="bar"></div></div>
+
+<div class="live">
+📡 الآن <span id="online">138</span> شخص يستخدم الأداة
 </div>
 
 <div class="meta">
-<div>🟢 المتصلين: <span id="online">170</span></div>
-<div>⏳ ينتهي خلال <span id="countdown">05:00</span></div>
+<div>⏳ <span id="time">05:00</span></div>
+<div>🟢 Online</div>
 </div>
 
-<div class="footer">تم التطوير بواسطة <strong>AliTech</strong></div>
+<a class="telegram" href="https://t.me/" target="_blank">
+الدخول إلى القناة
+</a>
+
+<div class="footer">
+لأغراض تحليلية فقط • ليست أداة ضمان أرباح
+</div>
 
 </div>
 
 <script>
 
 let t=300;
-const cd=document.getElementById("countdown");
-
 setInterval(()=>{
-if(t>0) t--;
-const m=String(Math.floor(t/60)).padStart(2,"0");
-const s=String(t%60).padStart(2,"0");
-cd.textContent=m+":"+s;
+t--;
+let m=String(Math.floor(t/60)).padStart(2,"0");
+let s=String(t%60).padStart(2,"0");
+document.getElementById("time").textContent=m+":"+s;
 },1000);
 
-const online=document.getElementById("online");
-
 setInterval(()=>{
-const base=170;
-const jitter=Math.floor(Math.random()*10)-4;
-online.textContent=base+jitter;
-},2500);
+document.getElementById("online").textContent =
+135 + Math.floor(Math.random()*10-4);
+},2000);
 
-const acc=document.getElementById("account");
-const btn=document.getElementById("start");
-const warn=document.getElementById("warning");
-const prog=document.getElementById("progress");
+const acc=document.getElementById("acc");
+const btn=document.getElementById("btn");
+const prog=document.getElementById("prog");
 
 acc.addEventListener("input",()=>{
-const valid=/^\d{10}$/.test(acc.value);
-btn.disabled=!valid;
-warn.style.display=valid?"none":"block";
+btn.disabled = acc.value.length < 5;
 });
 
 btn.addEventListener("click",()=>{
 prog.style.display="block";
 
-const bar=prog.querySelector(".bar");
-bar.style.animation="none";
-bar.offsetHeight;
-bar.style.animation="fill 2.4s forwards";
-
 setTimeout(()=>{
-alert("❌ لم يتم العثور على إيداع 20000 دينار. يرجى الإيداع للمتابعة.");
-},2400);
+window.location.href="https://t.me/";
+},2000);
+
 });
 
 </script>
