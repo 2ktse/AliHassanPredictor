@@ -37,145 +37,112 @@ background:rgba(21,28,46,0.95);
 border-radius:22px;
 padding:24px;
 box-shadow:0 0 50px rgba(0,0,0,0.7);
-border:1px solid rgba(255,255,255,0.05);
 }
 
-.logo{
-text-align:center;
-font-size:24px;
-font-weight:800;
-color:var(--green);
-margin-bottom:6px;
-}
-
-.subtitle{
-text-align:center;
-font-size:13px;
-color:var(--muted);
-margin-bottom:12px;
-}
+.logo{text-align:center;font-size:24px;font-weight:800;color:var(--green)}
+.subtitle{text-align:center;font-size:13px;color:var(--muted);margin-bottom:12px}
 
 .badges{
-display:flex;
-justify-content:center;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:14px;
+display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;
 }
 
 .badge{
-font-size:12px;
-padding:6px 10px;
-border-radius:999px;
+font-size:12px;padding:6px 10px;border-radius:999px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.07);
-color:var(--muted);
 }
 
-.notice{
-background:rgba(25,211,138,0.08);
-border:1px solid rgba(25,211,138,0.25);
-padding:10px;
-border-radius:12px;
-font-size:12px;
-text-align:center;
-margin-bottom:12px;
-color:var(--green);
-}
+.section-title{margin:12px 0 6px;font-weight:700;font-size:14px}
 
-.section-title{
-margin:12px 0 6px;
-font-weight:700;
-font-size:14px;
-}
-
-.games{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
-}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 
 .game{
 background:var(--card);
-border:1px solid rgba(255,255,255,0.06);
-padding:10px;
-border-radius:12px;
-display:flex;
-align-items:center;
-gap:6px;
-font-size:13px;
-cursor:pointer;
+padding:10px;border-radius:12px;
+display:flex;gap:6px;align-items:center;
 }
 
 .input{
-width:100%;
-padding:12px;
-border-radius:12px;
-border:none;
-background:var(--card);
-color:#fff;
+width:100%;padding:12px;border-radius:12px;border:none;
+background:var(--card);color:#fff;
 }
 
+.warn{display:none;color:var(--orange);font-size:12px;margin-top:6px}
+
 .btn{
-width:100%;
-margin-top:14px;
-padding:14px;
-border-radius:12px;
-border:none;
-font-weight:800;
-font-size:15px;
+width:100%;margin-top:14px;padding:14px;border:none;
+border-radius:12px;font-weight:800;
 background:linear-gradient(90deg,var(--orange),var(--green));
-color:#000;
-cursor:pointer;
+color:#000;cursor:pointer;
 }
 
 .btn:disabled{opacity:.5}
 
-.progress{
-display:none;
-height:10px;
-background:var(--card);
-border-radius:999px;
-margin-top:12px;
-overflow:hidden;
-}
-
-.bar{
-height:100%;
-width:0%;
-background:linear-gradient(90deg,var(--green),var(--blue));
-animation:fill 2s forwards;
-}
-
+.progress{display:none;height:10px;background:var(--card);border-radius:999px;margin-top:12px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue));animation:fill 2s forwards}
 @keyframes fill{to{width:100%}}
 
-.live{
-margin-top:12px;
-font-size:12px;
-color:var(--muted);
-text-align:center;
-}
-
+.live{margin-top:10px;font-size:12px;text-align:center;color:var(--muted)}
 #online{color:var(--green)}
 
 .meta{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-margin-top:12px;
-color:var(--muted);
+display:flex;justify-content:space-between;
+font-size:12px;margin-top:10px;color:var(--muted);
 }
 
 .telegram{
-margin-top:14px;
-display:block;
-text-align:center;
-padding:12px;
+margin-top:12px;display:block;text-align:center;
+padding:12px;border-radius:12px;background:#229ED9;
+color:#fff;font-weight:700;text-decoration:none;
+}
+
+/* последние пользователи */
+.recent{
+margin-top:12px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.05);
 border-radius:12px;
-background:#229ED9;
-color:white;
+padding:10px;
+font-size:12px;
+color:var(--muted);
+}
+
+/* popup */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popup-box{
+background:var(--card);
+padding:20px;
+border-radius:16px;
+width:90%;
+max-width:320px;
+text-align:center;
+}
+
+.popup-title{
+color:var(--orange);
 font-weight:700;
-text-decoration:none;
+margin-bottom:10px;
+}
+
+.popup-btn{
+margin-top:12px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:10px;
+background:var(--green);
+color:black;
+font-weight:700;
+cursor:pointer;
 }
 
 .footer{
@@ -192,59 +159,64 @@ color:var(--muted);
 <div class="container">
 
 <div class="logo">Ali AI Predictor</div>
-
-<div class="subtitle">
-تحليل ذكي للبيانات • نسخة العراق
-</div>
+<div class="subtitle">تحليل ذكي • نسخة العراق</div>
 
 <div class="badges">
 <div class="badge">🔒 آمن</div>
-<div class="badge">📊 تحليل</div>
-<div class="badge">⚡ مباشر</div>
+<div class="badge">⚡ AI</div>
 <div class="badge">🇮🇶 العراق</div>
 </div>
 
-<div class="notice">
-⚡ يتم تحديث البيانات كل 10 ثواني — النتائج تعتمد على التحليل فقط
-</div>
-
 <div class="section-title">اختر اللعبة</div>
-
 <div class="games">
-<label class="game"><input type="radio" name="g" checked> Aviator</label>
-<label class="game"><input type="radio" name="g"> Mines</label>
-<label class="game"><input type="radio" name="g"> Crash</label>
-<label class="game"><input type="radio" name="g"> Penalty</label>
-<label class="game"><input type="radio" name="g"> 🐔 Chicken Road</label>
-<label class="game"><input type="radio" name="g"> 🎰 Slots</label>
+<label class="game"><input type="radio" checked> ✈️ Aviator</label>
+<label class="game"><input type="radio"> 💣 Mines</label>
+<label class="game"><input type="radio"> 🍎 Apple of Fortune</label>
+<label class="game"><input type="radio"> ⚽ Penalty</label>
+<label class="game"><input type="radio"> 🐔 Chicken Road</label>
 </div>
 
 <div class="section-title">رقم الحساب</div>
-<input id="acc" class="input" placeholder="اكتب رقم الحساب">
+<input id="acc" class="input" maxlength="10" placeholder="اكتب 10 أرقام فقط">
+<div id="warn" class="warn">يرجى إدخال 10 أرقام فقط</div>
 
-<button id="btn" class="btn" disabled>
-بدء تحليل AI
-</button>
+<button id="btn" class="btn" disabled>بدء تحليل AI</button>
 
 <div class="progress" id="prog"><div class="bar"></div></div>
 
 <div class="live">
-📡 الآن <span id="online">138</span> شخص يستخدم الأداة
+📡 الآن <span id="online">140</span> مستخدم نشط
 </div>
 
 <div class="meta">
 <div>⏳ <span id="time">05:00</span></div>
-<div>🟢 Online</div>
+<div>🟢 مباشر</div>
+</div>
+
+<div class="recent" id="recent">
+آخر المستخدمين:<br>
 </div>
 
 <a class="telegram" href="https://t.me/" target="_blank">
-الدخول إلى القناة
+الدعم عبر تيليجرام
 </a>
 
 <div class="footer">
-لأغراض تحليلية فقط • ليست أداة ضمان أرباح
+نظام تحليل فقط
 </div>
 
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-box">
+<div class="popup-title">❌ لم يتم العثور على إيداع</div>
+<div>
+لم يتم العثور على إيداع 10000 دينار عراقي (IQD).<br>
+يرجى إجراء الإيداع للمتابعة.
+</div>
+<button class="popup-btn" onclick="goTG()">الدعم</button>
+</div>
 </div>
 
 <script>
@@ -265,19 +237,40 @@ document.getElementById("online").textContent =
 const acc=document.getElementById("acc");
 const btn=document.getElementById("btn");
 const prog=document.getElementById("prog");
+const warn=document.getElementById("warn");
 
 acc.addEventListener("input",()=>{
-btn.disabled = acc.value.length < 5;
+acc.value = acc.value.replace(/\D/g,'');
+const valid = acc.value.length === 10;
+btn.disabled = !valid;
+warn.style.display = valid ? "none" : "block";
 });
 
 btn.addEventListener("click",()=>{
 prog.style.display="block";
-
 setTimeout(()=>{
-window.location.href="https://t.me/";
+document.getElementById("popup").style.display="flex";
 },2000);
-
 });
+
+function goTG(){
+window.location.href="https://t.me/";
+}
+
+/* последние пользователи */
+const names = ["Ahmed","Amin","Amir","Omar","Mustafa","Zaid"];
+setInterval(()=>{
+const name = names[Math.floor(Math.random()*names.length)];
+const amount = Math.floor(Math.random()*50000+10000);
+const el = document.getElementById("recent");
+const div = document.createElement("div");
+div.textContent = name + " بدأ التحليل (" + amount + " IQD)";
+el.prepend(div);
+
+if(el.children.length>5){
+el.removeChild(el.lastChild);
+}
+},3000);
 
 </script>
 
