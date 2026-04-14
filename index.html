@@ -90,23 +90,6 @@ display:flex;justify-content:space-between;
 font-size:12px;margin-top:10px;color:var(--muted);
 }
 
-.telegram{
-margin-top:12px;display:block;text-align:center;
-padding:12px;border-radius:12px;background:#229ED9;
-color:#fff;font-weight:700;text-decoration:none;
-}
-
-/* последние пользователи */
-.recent{
-margin-top:12px;
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.05);
-border-radius:12px;
-padding:10px;
-font-size:12px;
-color:var(--muted);
-}
-
 /* popup */
 .popup{
 position:fixed;
@@ -193,14 +176,6 @@ color:var(--muted);
 <div>🟢 مباشر</div>
 </div>
 
-<div class="recent" id="recent">
-آخر المستخدمين:<br>
-</div>
-
-<a class="telegram" href="https://t.me/" target="_blank">
-الدعم عبر تيليجرام
-</a>
-
 <div class="footer">
 نظام تحليل فقط
 </div>
@@ -215,7 +190,7 @@ color:var(--muted);
 لم يتم العثور على إيداع 10000 دينار عراقي (IQD).<br>
 يرجى إجراء الإيداع للمتابعة.
 </div>
-<button class="popup-btn" onclick="goTG()">الدعم</button>
+<button class="popup-btn" onclick="retry()">حاول مرة أخرى</button>
 </div>
 </div>
 
@@ -253,24 +228,10 @@ document.getElementById("popup").style.display="flex";
 },2000);
 });
 
-function goTG(){
-window.location.href="https://t.me/";
+function retry(){
+document.getElementById("popup").style.display="none";
+prog.style.display="none";
 }
-
-/* последние пользователи */
-const names = ["Ahmed","Amin","Amir","Omar","Mustafa","Zaid"];
-setInterval(()=>{
-const name = names[Math.floor(Math.random()*names.length)];
-const amount = Math.floor(Math.random()*50000+10000);
-const el = document.getElementById("recent");
-const div = document.createElement("div");
-div.textContent = name + " بدأ التحليل (" + amount + " IQD)";
-el.prepend(div);
-
-if(el.children.length>5){
-el.removeChild(el.lastChild);
-}
-},3000);
 
 </script>
 
