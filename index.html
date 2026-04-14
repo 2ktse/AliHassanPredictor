@@ -9,9 +9,9 @@
 
 <style>
 :root{
---bg:#0b0f1a;
---card:#151c2e;
---text:#e9eef7;
+--bg:#070b14;
+--card:#121a2b;
+--text:#eaf0ff;
 --muted:#93a4b8;
 --green:#19d38a;
 --blue:#2b6fff;
@@ -22,7 +22,7 @@
 
 body{
 font-family:'Cairo',sans-serif;
-background:radial-gradient(circle at top,#101933,#0b0f1a);
+background:radial-gradient(circle at top,#101a33,#070b14);
 color:var(--text);
 display:flex;
 justify-content:center;
@@ -33,72 +33,139 @@ padding:18px;
 
 .container{
 width:min(460px,100%);
-background:rgba(21,28,46,0.95);
+background:rgba(18,26,43,0.92);
+border:1px solid rgba(255,255,255,0.06);
 border-radius:22px;
 padding:24px;
-box-shadow:0 0 50px rgba(0,0,0,0.7);
+box-shadow:0 0 60px rgba(0,0,0,0.8);
 }
 
-.logo{text-align:center;font-size:24px;font-weight:800;color:var(--green)}
-.subtitle{text-align:center;font-size:13px;color:var(--muted);margin-bottom:12px}
+.logo{
+text-align:center;
+font-size:26px;
+font-weight:900;
+color:var(--green);
+}
+
+.subtitle{
+text-align:center;
+font-size:13px;
+color:var(--muted);
+margin-top:4px;
+}
 
 .badges{
-display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px;
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap;
+margin-top:12px;
+margin-bottom:12px;
 }
 
 .badge{
-font-size:12px;padding:6px 10px;border-radius:999px;
+font-size:12px;
+padding:6px 10px;
+border-radius:999px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.07);
 }
 
-.section-title{margin:12px 0 6px;font-weight:700;font-size:14px}
+.section-title{
+margin:14px 0 8px;
+font-weight:800;
+font-size:14px;
+color:#cfe0ff;
+}
 
-.games{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* GAME CARDS */
+.games{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
 
 .game{
+position:relative;
+padding:12px;
+border-radius:14px;
 background:var(--card);
-padding:10px;border-radius:12px;
-display:flex;gap:6px;align-items:center;
+border:2px solid rgba(255,255,255,0.08);
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:10px;
+transition:.2s;
+font-weight:700;
+overflow:hidden;
 }
 
-.input{
-width:100%;padding:12px;border-radius:12px;border:none;
-background:var(--card);color:#fff;
+/* ICON BOX (casino style) */
+.icon{
+width:34px;
+height:34px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.06);
+font-size:18px;
 }
 
-.warn{display:none;color:var(--orange);font-size:12px;margin-top:6px}
+/* ACTIVE */
+.game.active{
+border-color:var(--green);
+box-shadow:0 0 14px rgba(25,211,138,0.35);
+transform:scale(1.02);
+}
 
-.btn{
-width:100%;margin-top:14px;padding:14px;border:none;
-border-radius:12px;font-weight:800;
+/* MOST POPULAR BADGE */
+.popular{
+position:absolute;
+top:6px;
+left:6px;
+font-size:10px;
 background:linear-gradient(90deg,var(--orange),var(--green));
-color:#000;cursor:pointer;
+color:black;
+padding:3px 6px;
+border-radius:999px;
+font-weight:900;
+}
+
+/* INPUT */
+.input{
+width:100%;
+padding:12px;
+border-radius:12px;
+border:none;
+background:var(--card);
+color:#fff;
+margin-top:6px;
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+margin-top:14px;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:900;
+background:linear-gradient(90deg,var(--orange),var(--green));
+color:#000;
+cursor:pointer;
 }
 
 .btn:disabled{opacity:.5}
 
-.progress{display:none;height:10px;background:var(--card);border-radius:999px;margin-top:12px}
-.bar{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue));animation:fill 2s forwards}
-@keyframes fill{to{width:100%}}
-
-.live{margin-top:10px;font-size:12px;text-align:center;color:var(--muted)}
-#online{color:var(--green)}
-
-.meta{
-display:flex;justify-content:space-between;
-font-size:12px;margin-top:10px;color:var(--muted);
-}
-
-/* popup */
+/* POPUP */
 .popup{
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(0,0,0,0.6);
+inset:0;
+background:rgba(0,0,0,0.65);
 display:none;
-justify-content:center;
 align-items:center;
+justify-content:center;
 }
 
 .popup-box{
@@ -108,32 +175,49 @@ border-radius:16px;
 width:90%;
 max-width:320px;
 text-align:center;
+border:1px solid rgba(255,255,255,0.08);
 }
 
 .popup-title{
 color:var(--orange);
-font-weight:700;
+font-weight:900;
 margin-bottom:10px;
 }
 
 .popup-btn{
 margin-top:12px;
-padding:10px;
 width:100%;
+padding:10px;
 border:none;
 border-radius:10px;
 background:var(--green);
-color:black;
-font-weight:700;
+color:#000;
+font-weight:800;
 cursor:pointer;
 }
 
-.footer{
+/* TELEGRAM */
+.telegram{
+margin-top:12px;
+display:block;
 text-align:center;
-margin-top:10px;
-font-size:11px;
+padding:12px;
+border-radius:12px;
+background:#229ED9;
+color:#fff;
+font-weight:800;
+text-decoration:none;
+}
+
+.meta{
+display:flex;
+justify-content:space-between;
+margin-top:12px;
+font-size:12px;
 color:var(--muted);
 }
+
+#online{color:var(--green)}
 </style>
 </head>
 
@@ -142,42 +226,59 @@ color:var(--muted);
 <div class="container">
 
 <div class="logo">Ali AI Predictor</div>
-<div class="subtitle">تحليل ذكي • نسخة العراق</div>
+<div class="subtitle">AI Game Analytics • Iraq Dashboard</div>
 
 <div class="badges">
-<div class="badge">🔒 آمن</div>
-<div class="badge">⚡ AI</div>
-<div class="badge">🇮🇶 العراق</div>
+<div class="badge">🔒 Secure</div>
+<div class="badge">⚡ AI System</div>
+<div class="badge">📊 Real-time</div>
+<div class="badge">🇮🇶 Iraq</div>
 </div>
 
 <div class="section-title">اختر اللعبة</div>
+
 <div class="games">
-<label class="game"><input type="radio" checked> ✈️ Aviator</label>
-<label class="game"><input type="radio"> 💣 Mines</label>
-<label class="game"><input type="radio"> 🍎 Apple of Fortune</label>
-<label class="game"><input type="radio"> ⚽ Penalty</label>
-<label class="game"><input type="radio"> 🐔 Chicken Road</label>
+
+<div class="game active" data-game>
+<div class="icon">✈️</div>
+<div>Aviator</div>
+<div class="popular">Most popular</div>
+</div>
+
+<div class="game" data-game>
+<div class="icon">💣</div>
+<div>Mines</div>
+</div>
+
+<div class="game" data-game>
+<div class="icon">🚀</div>
+<div>Crash</div>
+</div>
+
+<div class="game" data-game>
+<div class="icon">⚽</div>
+<div>Penalty</div>
+</div>
+
+<div class="game" data-game>
+<div class="icon">🐔</div>
+<div>Chicken Road</div>
+</div>
+
 </div>
 
 <div class="section-title">رقم الحساب</div>
-<input id="acc" class="input" maxlength="10" placeholder="اكتب 10 أرقام فقط">
-<div id="warn" class="warn">يرجى إدخال 10 أرقام فقط</div>
+<input class="input" id="acc" maxlength="10" placeholder="أدخل 10 أرقام">
 
-<button id="btn" class="btn" disabled>بدء تحليل AI</button>
+<button class="btn" id="btn" disabled>بدء تحليل AI</button>
 
-<div class="progress" id="prog"><div class="bar"></div></div>
-
-<div class="live">
-📡 الآن <span id="online">140</span> مستخدم نشط
-</div>
+<a class="telegram" href="https://t.me/" target="_blank">
+Telegram Support
+</a>
 
 <div class="meta">
-<div>⏳ <span id="time">05:00</span></div>
-<div>🟢 مباشر</div>
-</div>
-
-<div class="footer">
-نظام تحليل فقط
+<div>⏳ 05:00</div>
+<div>🟢 Live</div>
 </div>
 
 </div>
@@ -185,52 +286,40 @@ color:var(--muted);
 <!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-box">
-<div class="popup-title">❌ لم يتم العثور على إيداع</div>
-<div>
-لم يتم العثور على إيداع 10000 دينار عراقي (IQD).<br>
-يرجى إجراء الإيداع للمتابعة.
-</div>
+<div class="popup-title">❌ لا يوجد إيداع</div>
+<div>يرجى إيداع 10000 IQD للمتابعة</div>
 <button class="popup-btn" onclick="retry()">حاول مرة أخرى</button>
 </div>
 </div>
 
 <script>
 
-let t=300;
-setInterval(()=>{
-t--;
-let m=String(Math.floor(t/60)).padStart(2,"0");
-let s=String(t%60).padStart(2,"0");
-document.getElementById("time").textContent=m+":"+s;
-},1000);
+const games=document.querySelectorAll("[data-game]");
 
-setInterval(()=>{
-document.getElementById("online").textContent =
-135 + Math.floor(Math.random()*10-4);
-},2000);
+games.forEach(g=>{
+g.addEventListener("click",()=>{
+games.forEach(x=>x.classList.remove("active"));
+g.classList.add("active");
+});
+});
 
 const acc=document.getElementById("acc");
 const btn=document.getElementById("btn");
-const prog=document.getElementById("prog");
-const warn=document.getElementById("warn");
+const popup=document.getElementById("popup");
 
 acc.addEventListener("input",()=>{
-acc.value = acc.value.replace(/\D/g,'');
-const valid = acc.value.length === 10;
-btn.disabled = !valid;
-warn.style.display = valid ? "none" : "block";
+acc.value=acc.value.replace(/\D/g,'');
+btn.disabled=acc.value.length!==10;
 });
 
 btn.addEventListener("click",()=>{
-prog.style.display="block";
 setTimeout(()=>{
-document.getElementById("popup").style.display="flex";
-},2000);
+popup.style.display="flex";
+},1200);
 });
 
 function retry(){
-document.getElementById("popup").style.display="none";
-prog.style.display="none";
+popup.style.display="none";
 }
 
 </script>
